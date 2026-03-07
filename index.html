@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Green And Blue - Ecosistema Empresarial</title>
+  <meta name="description" content="Sitio web corporativo tipo holding para Green And Blue, diseñado para proyectar autoridad, minimalismo y eficiencia operativa." />
+  <link rel="icon" type="image/png" href="https://ext.same-assets.com/2922029392/2829591140.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ── CSS Reset & Variables ──────────────────────────────── */
+    :root {
+      --primary: #134e3e;
+      --primary-light: #1a6b54;
+      --primary-dark: #0d3a2d;
+      --secondary: #69bea7;
+      --accent: #16a085;
+      --background: #f7fafb;
+      --background-alt: #ffffff;
+      --text-primary: #1a1a1a;
+      --text-secondary: #5a6a69;
+      --text-muted: #97a7a6;
+      --border: #e2e8e7;
+      --border-light: #cad9d8;
+      --white: #ffffff;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.05);
+      --shadow-md: 0 4px 12px rgba(0,0,0,.08);
+      --shadow-lg: 0 8px 30px rgba(0,0,0,.12);
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      --transition: all 0.3s ease;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--background);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ── Container ──────────────────────────────────────────── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Buttons ────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      text-align: center;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+    .btn-primary:hover {
+      background-color: var(--primary-light);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--primary);
+      border: 2px solid var(--border);
+    }
+    .btn-outline:hover {
+      border-color: var(--primary);
+      background-color: rgba(19,78,62,.05);
+    }
+
+    .btn-light {
+      background-color: var(--white);
+      color: var(--primary);
+    }
+    .btn-light:hover {
+      background-color: var(--background);
+      transform: translateY(-2px);
+    }
+
+    /* WhatsApp button */
+    .btn-whatsapp {
+      background-color: #25d366;
+      color: var(--white);
+    }
+    .btn-whatsapp:hover {
+      background-color: #1ebe57;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(37,211,102,.35);
+    }
+
+    /* ── Header ─────────────────────────────────────────────── */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 1000;
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s ease;
+    }
+    .header.scrolled {
+      box-shadow: 0 2px 20px rgba(0,0,0,.08);
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+    }
+    .logo-text {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-link {
+      padding: 8px 14px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+    .nav-link:hover {
+      color: var(--primary);
+      background-color: rgba(19,78,62,.05);
+    }
+
+    .header-cta {
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 8px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .mobile-menu-btn span {
+      width: 24px;
+      height: 2px;
+      background-color: var(--primary);
+      border-radius: 2px;
+      transition: var(--transition);
+      display: block;
+    }
+    .mobile-menu-btn.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .mobile-menu-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .mobile-menu-btn.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* ── Mobile Nav ─────────────────────────────────────────── */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background-color: var(--white);
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      z-index: 999;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: var(--shadow-md);
+    }
+    .mobile-nav.active { display: flex; }
+    .mobile-nav-link {
+      padding: 12px 16px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+    .mobile-nav-link:hover {
+      color: var(--primary);
+      background-color: rgba(19,78,62,.05);
+    }
+    .mobile-cta { margin-top: 8px; }
+
+    /* ── Hero Section ───────────────────────────────────────── */
+    .hero {
+      padding: 140px 0 80px;
+      background-color: var(--white);
+    }
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-left { max-width: 520px; }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: rgba(19,78,62,.08);
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: var(--radius-xl);
+      margin-bottom: 24px;
+    }
+
+    .hero-title {
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    .text-primary { color: var(--primary); }
+
+    .hero-description {
+      font-size: 18px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-right {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .info-card {
+      background-color: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-lg);
+      max-width: 380px;
+      width: 100%;
+    }
+    .info-card-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 20px;
+    }
+    .info-card-logo {
+      width: 52px;
+      height: 52px;
+      background-color: var(--primary);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .info-card-title h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .info-card-title p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .info-card-items {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .info-card-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .info-dot {
+      width: 10px;
+      height: 10px;
+      background-color: var(--primary);
+      border-radius: 50%;
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+    .info-card-item strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .info-card-item p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ── Stats Section ──────────────────────────────────────── */
+    .stats {
+      padding: 80px 0;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--white);
+    }
+    .stats-title {
+      font-size: 42px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .stats-subtitle {
+      text-align: center;
+      font-size: 16px;
+      color: rgba(255,255,255,.8);
+      margin-bottom: 50px;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+    }
+    .stat-item { text-align: center; }
+    .stat-number {
+      display: block;
+      font-size: 64px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 12px;
+      color: var(--secondary);
+    }
+    .stat-label {
+      display: block;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .stat-desc {
+      font-size: 13px;
+      color: rgba(255,255,255,.7);
+    }
+
+    /* ── Section Common Styles ──────────────────────────────── */
+    .section-title {
+      font-size: 42px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .section-subtitle {
+      text-align: center;
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin-bottom: 50px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── Pillars Section ────────────────────────────────────── */
+    .pillars {
+      padding: 100px 0;
+      background-color: var(--white);
+    }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .pillar-card {
+      background-color: var(--background);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      transition: var(--transition);
+    }
+    .pillar-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary);
+    }
+    .pillar-icon {
+      width: 56px;
+      height: 56px;
+      background-color: rgba(19,78,62,.08);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+    .pillar-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .pillar-card p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ── Companies Section ──────────────────────────────────── */
+    .companies {
+      padding: 100px 0;
+      background-color: var(--background);
+    }
+    .companies-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .company-card {
+      background-color: var(--white);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
+      padding: 28px;
+      border-radius: var(--radius-md);
+      transition: var(--transition);
+    }
+    .company-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary);
+      border-left-color: var(--primary);
+    }
+    .company-category {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    .company-name {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .company-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ── Ecosystem Section ──────────────────────────────────── */
+    .ecosystem {
+      padding: 100px 0;
+      background-color: var(--white);
+    }
+    .ecosystem-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: flex-start;
+    }
+    .ecosystem-title {
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .ecosystem-desc {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .ecosystem-features {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .ecosystem-feature {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      background-color: rgba(19,78,62,.08);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--primary);
+    }
+    .ecosystem-feature strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .ecosystem-feature p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .benefits-card {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: var(--radius-xl);
+      padding: 40px;
+      color: var(--white);
+    }
+    .benefits-card h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+    .benefits-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .benefits-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    .benefits-list svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--secondary);
+    }
+
+    /* ── Contact Section ────────────────────────────────────── */
+    .contact-section {
+      padding: 100px 0;
+      background-color: var(--background);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: flex-start;
+    }
+    .contact-info h2 {
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .contact-info p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .contact-method {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      background-color: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      transition: var(--transition);
+      color: var(--text-primary);
+    }
+    .contact-method:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-sm);
+      transform: translateX(4px);
+    }
+    .contact-method-icon {
+      width: 40px;
+      height: 40px;
+      background-color: rgba(19,78,62,.08);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--primary);
+    }
+    .contact-method-text strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .contact-method-text span {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* Contact Form */
+    .contact-form-card {
+      background-color: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      box-shadow: var(--shadow-md);
+    }
+    .contact-form-card h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .contact-form-card > p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--text-primary);
+      background-color: var(--background);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      outline: none;
+      resize: vertical;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(19,78,62,.08);
+      background-color: var(--white);
+    }
+    .form-group textarea { min-height: 100px; }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-submit { width: 100%; margin-top: 4px; }
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 20px;
+    }
+    .form-success svg {
+      color: var(--primary);
+      margin: 0 auto 12px;
+    }
+    .form-success p {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    /* ── CTA Section ────────────────────────────────────────── */
+    .cta-section {
+      padding: 100px 0;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--white);
+    }
+    .cta-content {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .cta-title {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .cta-desc {
+      font-size: 18px;
+      color: rgba(255,255,255,.85);
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── Footer ─────────────────────────────────────────────── */
+    .footer {
+      background-color: var(--white);
+      padding: 80px 0 0;
+      border-top: 1px solid var(--border);
+    }
+    .footer-content {
+      display: grid;
+      grid-template-columns: 1.5fr 2fr;
+      gap: 60px;
+      padding-bottom: 50px;
+      border-bottom: 1px solid var(--border);
+    }
+    .footer-brand .logo { margin-bottom: 16px; }
+    .footer-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 24px;
+      max-width: 280px;
+    }
+    .social-links { display: flex; gap: 12px; }
+    .social-links a {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      transition: var(--transition);
+    }
+    .social-links a:hover {
+      background-color: var(--primary);
+      border-color: var(--primary);
+      color: var(--white);
+    }
+    .footer-links {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+    .footer-col h4 {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+    .footer-col ul {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .footer-col a {
+      font-size: 14px;
+      color: var(--text-secondary);
+      transition: var(--transition);
+    }
+    .footer-col a:hover { color: var(--primary); }
+    .contact-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .contact-list svg { color: var(--text-muted); flex-shrink: 0; }
+
+    .footer-bottom {
+      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-legal { display: flex; gap: 24px; }
+    .footer-legal a {
+      font-size: 14px;
+      color: var(--text-secondary);
+      transition: var(--transition);
+    }
+    .footer-legal a:hover { color: var(--primary); }
+    .copyright {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ── Scroll Animations ──────────────────────────────────── */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── WhatsApp Floating Button ───────────────────────────── */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 56px;
+      height: 56px;
+      background-color: #25d366;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(37,211,102,.4);
+      transition: var(--transition);
+      z-index: 900;
+      cursor: pointer;
+    }
+    .whatsapp-float:hover {
+      background-color: #1ebe57;
+      transform: scale(1.1);
+      box-shadow: 0 6px 24px rgba(37,211,102,.5);
+    }
+    .whatsapp-float svg { width: 28px; height: 28px; }
+
+    /* ── Responsive ─────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .nav, .header-cta { display: none; }
+      .mobile-menu-btn { display: flex; }
+
+      .hero-content { grid-template-columns: 1fr; gap: 40px; }
+      .hero-left { max-width: 100%; }
+      .hero-title { font-size: 44px; }
+      .hero-right { justify-content: center; }
+      .info-card { max-width: 100%; }
+
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+      .companies-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .ecosystem-content { grid-template-columns: 1fr; gap: 40px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+
+      .footer-content { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 768px) {
+      .hero { padding: 120px 0 60px; }
+      .hero-title { font-size: 36px; }
+      .hero-description { font-size: 16px; }
+      .hero-ctas { flex-direction: column; }
+      .btn { width: 100%; }
+
+      .stats-title, .section-title, .ecosystem-title, .cta-title, .contact-info h2 {
+        font-size: 32px;
+      }
+      .stat-number { font-size: 48px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+      .pillars-grid, .companies-grid { grid-template-columns: 1fr; }
+
+      .form-row { grid-template-columns: 1fr; }
+
+      .cta-buttons { flex-direction: column; align-items: center; }
+      .cta-buttons .btn { max-width: 300px; }
+
+      .footer-links { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .footer-legal { justify-content: center; }
+
+      .whatsapp-float { bottom: 20px; right: 20px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title { font-size: 32px; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .cta-title { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header" id="top">
+    <div class="container header-content">
+      <a href="#top" class="logo">
+        <img src="https://ext.same-assets.com/2922029392/480240096.png" alt="Green & Blue Logo" class="logo-img" />
+        <span class="logo-text">Green &amp;<br>Blue</span>
+      </a>
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="#about" class="nav-link">Quiénes Somos</a>
+        <a href="#business-units" class="nav-link">Unidades de Negocio</a>
+        <a href="#portfolio" class="nav-link">Portfolio</a>
+        <a href="#ecosystem" class="nav-link">Ecosistema</a>
+        <a href="#contact" class="nav-link">Contacto</a>
+      </nav>
+      <a href="#contact" class="btn btn-primary header-cta">Agendar Consulta</a>
+      <button class="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Nav -->
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Navegación móvil">
+    <a href="#about" class="mobile-nav-link">Quiénes Somos</a>
+    <a href="#business-units" class="mobile-nav-link">Unidades de Negocio</a>
+    <a href="#portfolio" class="mobile-nav-link">Portfolio</a>
+    <a href="#ecosystem" class="mobile-nav-link">Ecosistema</a>
+    <a href="#contact" class="mobile-nav-link">Contacto</a>
+    <a href="#contact" class="btn btn-primary mobile-cta">Agendar Consulta</a>
+  </nav>
+
+  <main>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="hero-left">
+          <span class="badge">Ecosistema Empresarial Integrado</span>
+          <h1 class="hero-title">Evoluciona tu <span class="text-primary">Estructura</span></h1>
+          <p class="hero-description">No vendemos servicios. Construimos ecosistemas empresariales donde pequeños empresarios se transforman en fundadores de negocios sólidos y escalables.</p>
+          <div class="hero-ctas">
+            <a href="#contact" class="btn btn-primary">
+              Agendar Consulta Estratégica
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+            <a href="#about" class="btn btn-outline">Conocer Nuestra Visión</a>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="info-card">
+            <div class="info-card-header">
+              <div class="info-card-logo" aria-hidden="true">GB</div>
+              <div class="info-card-title">
+                <h3>Green &amp; Blue</h3>
+                <p>Holding Empresarial</p>
+              </div>
+            </div>
+            <div class="info-card-items">
+              <div class="info-card-item">
+                <span class="info-dot" aria-hidden="true"></span>
+                <div>
+                  <strong>6 Unidades de Negocio</strong>
+                  <p>Integradas estratégicamente</p>
+                </div>
+              </div>
+              <div class="info-card-item">
+                <span class="info-dot" aria-hidden="true"></span>
+                <div>
+                  <strong>Ecosistema Escalable</strong>
+                  <p>Preparado para crecer</p>
+                </div>
+              </div>
+              <div class="info-card-item">
+                <span class="info-dot" aria-hidden="true"></span>
+                <div>
+                  <strong>Automatización Inteligente</strong>
+                  <p>Procesos optimizados</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats" aria-labelledby="stats-heading">
+      <div class="container">
+        <h2 class="stats-title" id="stats-heading">Nuestra Escala</h2>
+        <p class="stats-subtitle">Números que demuestran solidez empresarial</p>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number" data-target="6" data-suffix="+">6+</span>
+            <strong class="stat-label">Unidades de Negocio</strong>
+            <p class="stat-desc">Empresas integradas en el ecosistema</p>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="500" data-suffix="+">500+</span>
+            <strong class="stat-label">Clientes Activos</strong>
+            <p class="stat-desc">En toda la región</p>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="15" data-suffix="+">15+</span>
+            <strong class="stat-label">Años Experiencia</strong>
+            <p class="stat-desc">En gestión empresarial</p>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="100" data-suffix="%">100%</span>
+            <strong class="stat-label">Compromiso</strong>
+            <p class="stat-desc">Con evolución estructural</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About / Pillars Section -->
+    <section class="pillars" id="about" aria-labelledby="pillars-heading">
+      <div class="container">
+        <h2 class="section-title" id="pillars-heading">Nuestros 3 Pilares</h2>
+        <p class="section-subtitle">Estrategia integrada para transformar empresarios en fundadores de negocios sólidos</p>
+        <div class="pillars-grid">
+          <div class="pillar-card animate-on-scroll">
+            <div class="pillar-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                <polyline points="17 6 23 6 23 12"></polyline>
+              </svg>
+            </div>
+            <h3>Marketing Estratégico Digital</h3>
+            <p>Captación, posicionamiento y crecimiento de marca. Estrategias digitales que transforman negocios.</p>
+          </div>
+          <div class="pillar-card animate-on-scroll">
+            <div class="pillar-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <h3>Soluciones Empresariales</h3>
+            <p>Optimización de procesos, estructura operativa y visión estratégica para empresarios en crecimiento.</p>
+          </div>
+          <div class="pillar-card animate-on-scroll">
+            <div class="pillar-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+            </div>
+            <h3>Ecosistema Green &amp; Blue</h3>
+            <p>Red empresarial integrada. Acceso a sinergias, oportunidades y crecimiento colaborativo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Business Units Section -->
+    <section class="companies" id="business-units" aria-labelledby="companies-heading">
+      <div class="container">
+        <h2 class="section-title" id="companies-heading">Unidades de Negocio</h2>
+        <p class="section-subtitle">Diversificación estratégica con identidad corporativa unificada</p>
+        <div class="companies-grid" id="portfolio">
+          <div class="company-card animate-on-scroll">
+            <span class="company-category">MARKETING &amp; PRODUCCIÓN</span>
+            <h3 class="company-name">GAB Producciones</h3>
+            <p class="company-desc">Agencia especializada en estrategia digital, contenido y producción audiovisual de alto nivel.</p>
+          </div>
+          <div class="company-card animate-on-scroll">
+            <span class="company-category">ALIMENTOS &amp; BEBIDAS</span>
+            <h3 class="company-name">Gastronomía</h3>
+            <p class="company-desc">Cadenas de comida rápida con propuesta de valor diferenciada y experiencia de cliente premium.</p>
+          </div>
+          <div class="company-card animate-on-scroll">
+            <span class="company-category">BEBIDAS ARTESANALES</span>
+            <h3 class="company-name">Macerados en Pisco</h3>
+            <p class="company-desc">Marca de bebidas artesanales de alta calidad con identidad cultural peruana.</p>
+          </div>
+          <div class="company-card animate-on-scroll">
+            <span class="company-category">ENTRETENIMIENTO</span>
+            <h3 class="company-name">Proyecto Musical</h3>
+            <p class="company-desc">Base para sello musical electrónico. Producción, distribución y promoción de talento.</p>
+          </div>
+          <div class="company-card animate-on-scroll">
+            <span class="company-category">SERVICIOS FINANCIEROS</span>
+            <h3 class="company-name">Casa de Empeño</h3>
+            <p class="company-desc">Soluciones de liquidez con transparencia y profesionalismo. Acceso a capital de forma ágil.</p>
+          </div>
+          <div class="company-card animate-on-scroll">
+            <span class="company-category">ESTÉTICA &amp; BIENESTAR</span>
+            <h3 class="company-name">Cuidado Femenino</h3>
+            <p class="company-desc">Marca especializada en estética y cuidado de piel. Productos y servicios de excelencia.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ecosystem Section -->
+    <section class="ecosystem" id="ecosystem" aria-labelledby="ecosystem-heading">
+      <div class="container ecosystem-content">
+        <div class="ecosystem-left">
+          <h2 class="ecosystem-title" id="ecosystem-heading">Ecosistema &amp; Sinergias</h2>
+          <p class="ecosystem-desc">Formar parte de Green &amp; Blue no significa solo contratar un servicio. Significa acceder a una red estratégica de empresas, oportunidades y sinergias que aceleran tu crecimiento.</p>
+          <div class="ecosystem-features">
+            <div class="ecosystem-feature animate-on-scroll">
+              <div class="feature-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Red Empresarial Integrada</strong>
+                <p>Conecta con otros fundadores y empresarios en el ecosistema para colaborar y crecer juntos.</p>
+              </div>
+            </div>
+            <div class="ecosystem-feature animate-on-scroll">
+              <div class="feature-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Oportunidades de Inversión</strong>
+                <p>Acceso a capital y oportunidades de inversión dentro del grupo para escalar tus proyectos.</p>
+              </div>
+            </div>
+            <div class="ecosystem-feature animate-on-scroll">
+              <div class="feature-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Automatización Compartida</strong>
+                <p>Sistemas y procesos optimizados que puedes implementar en tu negocio desde el primer día.</p>
+              </div>
+            </div>
+            <div class="ecosystem-feature animate-on-scroll">
+              <div class="feature-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Mentoría Estratégica</strong>
+                <p>Guía de expertos en gestión empresarial, marketing y escalabilidad para cada etapa de tu negocio.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ecosystem-right">
+          <div class="benefits-card animate-on-scroll">
+            <h3>¿Por qué unirse al ecosistema?</h3>
+            <ul class="benefits-list">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Acceso a tecnología y automatización de punta
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Red de contactos estratégicos y oportunidades
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Mentoría y guía en crecimiento empresarial
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Escalabilidad estructurada y sostenible
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Oportunidades de inversión y financiamiento
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact" aria-labelledby="contact-heading">
+      <div class="container contact-grid">
+        <div class="contact-info">
+          <h2 id="contact-heading">Hablemos de tu <span class="text-primary">Negocio</span></h2>
+          <p>Agendemos una consulta estratégica para explorar cómo Green &amp; Blue puede acelerar tu crecimiento empresarial. Sin compromisos, solo valor.</p>
+          <div class="contact-methods">
+            <a href="https://wa.me/51984123456?text=Hola%2C%20me%20interesa%20una%20consulta%20estrat%C3%A9gica%20con%20Green%20%26%20Blue" class="contact-method" target="_blank" rel="noopener noreferrer">
+              <div class="contact-method-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
+                  <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.849L0 24l6.349-1.495A11.948 11.948 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.656-.493-5.193-1.357l-.371-.22-3.854.908.971-3.76-.242-.384A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+                </svg>
+              </div>
+              <div class="contact-method-text">
+                <strong>WhatsApp</strong>
+                <span>+51 (984) 123-456 · Respuesta rápida</span>
+              </div>
+            </a>
+            <a href="mailto:info@greenandblue.com" class="contact-method">
+              <div class="contact-method-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <div class="contact-method-text">
+                <strong>Email</strong>
+                <span>info@greenandblue.com</span>
+              </div>
+            </a>
+            <a href="https://instagram.com/gab_producciones98" target="_blank" rel="noopener noreferrer" class="contact-method">
+              <div class="contact-method-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </div>
+              <div class="contact-method-text">
+                <strong>Instagram</strong>
+                <span>@gab_producciones98</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-form-card">
+          <h3>Agenda tu Consulta</h3>
+          <p>Cuéntanos sobre tu proyecto y te contactamos en 24 horas</p>
+          <div id="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre">Nombre completo</label>
+                <input type="text" id="nombre" placeholder="Tu nombre" />
+              </div>
+              <div class="form-group">
+                <label for="empresa">Empresa / Proyecto</label>
+                <input type="text" id="empresa" placeholder="Nombre de tu empresa" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Correo electrónico</label>
+              <input type="email" id="email" placeholder="tu@correo.com" />
+            </div>
+            <div class="form-group">
+              <label for="telefono">WhatsApp / Teléfono</label>
+              <input type="tel" id="telefono" placeholder="+51 984 000 000" />
+            </div>
+            <div class="form-group">
+              <label for="servicio">¿Qué te interesa?</label>
+              <select id="servicio">
+                <option value="">Selecciona una opción</option>
+                <option>Marketing Estratégico Digital</option>
+                <option>Soluciones Empresariales</option>
+                <option>Unirse al Ecosistema</option>
+                <option>GAB Producciones</option>
+                <option>Otro / Consulta General</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="mensaje">Cuéntanos tu situación</label>
+              <textarea id="mensaje" placeholder="¿Cuál es tu principal desafío empresarial hoy?"></textarea>
+            </div>
+            <button type="button" class="btn btn-primary form-submit" id="form-submit-btn">
+              Enviar Consulta
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </div>
+          <div class="form-success" id="form-success">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <p>¡Consulta enviada! Te contactamos pronto.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" aria-labelledby="cta-heading">
+      <div class="container cta-content">
+        <h2 class="cta-title" id="cta-heading">¿Listo para Evolucionar?</h2>
+        <p class="cta-desc">Únete al ecosistema empresarial más sólido de la región y transforma tu negocio con estructura, estrategia y sinergias reales.</p>
+        <div class="cta-buttons">
+          <a href="#contact" class="btn btn-light">
+            Agendar Consulta Ahora
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="https://wa.me/51984123456?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Green%20%26%20Blue" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.849L0 24l6.349-1.495A11.948 11.948 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.656-.493-5.193-1.357l-.371-.22-3.854.908.971-3.76-.242-.384A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+            </svg>
+            Escribir por WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="#top" class="logo">
+            <img src="https://ext.same-assets.com/2922029392/480240096.png" alt="Green & Blue Logo" class="logo-img" />
+            <span class="logo-text">Green &amp; Blue</span>
+          </a>
+          <p class="footer-desc">Ecosistema empresarial integrado para la evolución estructural de negocios.</p>
+          <div class="social-links">
+            <a href="https://facebook.com/gabproducciones" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+            <a href="https://instagram.com/gab_producciones98" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="https://wa.me/51984123456" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.849L0 24l6.349-1.495A11.948 11.948 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.656-.493-5.193-1.357l-.371-.22-3.854.908.971-3.76-.242-.384A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+              </svg>
+            </a>
+            <a href="mailto:info@greenandblue.com" aria-label="Correo electrónico">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>EMPRESA</h4>
+            <ul>
+              <li><a href="#about">Quiénes Somos</a></li>
+              <li><a href="#business-units">Unidades de Negocio</a></li>
+              <li><a href="#portfolio">Portfolio</a></li>
+              <li><a href="#ecosystem">Ecosistema</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>NEGOCIOS</h4>
+            <ul>
+              <li><a href="#business-units">GAB Producciones</a></li>
+              <li><a href="#business-units">Macerados en Pisco</a></li>
+              <li><a href="#business-units">Casa de Empeño</a></li>
+              <li><a href="#business-units">Proyecto Musical</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>CONTACTO</h4>
+            <ul class="contact-list">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <a href="mailto:info@greenandblue.com">info@greenandblue.com</a>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                <a href="tel:+51984123456">+51 (984) 123-456</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-legal">
+          <a href="#">Privacidad</a>
+          <a href="#">Términos</a>
+          <a href="#">Cookies</a>
+        </div>
+        <p class="copyright">© 2026 Green &amp; Blue Holding. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/51984123456?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20Green%20%26%20Blue"
+     class="whatsapp-float"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.849L0 24l6.349-1.495A11.948 11.948 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.656-.493-5.193-1.357l-.371-.22-3.854.908.971-3.76-.242-.384A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+    </svg>
+  </a>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // ── Mobile menu ────────────────────────────────────────
+      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+      const mobileNav = document.querySelector('.mobile-nav');
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-cta');
+
+      if (mobileMenuBtn && mobileNav) {
+        mobileMenuBtn.addEventListener('click', () => {
+          const isOpen = mobileNav.classList.toggle('active');
+          mobileMenuBtn.classList.toggle('active');
+          mobileMenuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        for (const link of mobileNavLinks) {
+          link.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+          });
+        }
+
+        // Close on outside click
+        document.addEventListener('click', (e) => {
+          if (!mobileMenuBtn.contains(e.target) && !mobileNav.contains(e.target)) {
+            mobileNav.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+
+      // ── Header scroll effect ───────────────────────────────
+      const header = document.querySelector('.header');
+      if (header) {
+        window.addEventListener('scroll', () => {
+          header.classList.toggle('scrolled', window.scrollY > 50);
+        }, { passive: true });
+      }
+
+      // ── Smooth scroll for anchor links ─────────────────────
+      const headerHeight = header ? header.offsetHeight : 0;
+      document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+          const href = link.getAttribute('href');
+          if (href && href !== '#') {
+            const target = document.querySelector(href);
+            if (target) {
+              e.preventDefault();
+              const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight - 8;
+              window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+            }
+          }
+        });
+      });
+
+      // ── Scroll animations (IntersectionObserver) ───────────
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -60px 0px', threshold: 0.1 });
+
+      document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+      // ── Counter animation ──────────────────────────────────
+      const animateCounter = (el) => {
+        const target = parseInt(el.dataset.target, 10);
+        const suffix = el.dataset.suffix || '';
+        if (isNaN(target)) return;
+        const duration = 1800;
+        const steps = 50;
+        const stepDuration = duration / steps;
+        let current = 0;
+        const tick = () => {
+          current += target / steps;
+          if (current >= target) {
+            el.textContent = target + suffix;
+          } else {
+            el.textContent = Math.floor(current) + suffix;
+            setTimeout(tick, stepDuration);
+          }
+        };
+        tick();
+      };
+
+      const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll('.stat-number[data-target]').forEach(animateCounter);
+            statsObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+
+      const statsSection = document.querySelector('.stats');
+      if (statsSection) statsObserver.observe(statsSection);
+
+      // ── Contact form (demo) ────────────────────────────────
+      const submitBtn = document.getElementById('form-submit-btn');
+      if (submitBtn) {
+        submitBtn.addEventListener('click', () => {
+          const nombre = document.getElementById('nombre').value.trim();
+          const email  = document.getElementById('email').value.trim();
+          if (!nombre || !email) {
+            alert('Por favor completa al menos tu nombre y correo.');
+            return;
+          }
+          document.getElementById('contact-form').style.display = 'none';
+          document.getElementById('form-success').style.display  = 'block';
+        });
+      }
+    });
+  </script>
+</body>
+</html>
